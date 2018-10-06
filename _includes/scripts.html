@@ -5,6 +5,7 @@
 <script src="{{ '/js/skel.min.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/js/util.js' | prepend: site.baseurl }}"></script>
 <!--[if lte IE 8]><script src="{{ '/js/ie/respond.min.js' | prepend: site.baseurl }}"></script><![endif]-->
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@8.17.0/dist/lazyload.min.js"></script>
 <script src="{{ '/js/main.js' | prepend: site.baseurl }}"></script>{%
   for include in page.script-includes %}{%
     assign test1 = include | slice: 0,2 %}{%
@@ -20,15 +21,13 @@
 </script>
 {% endif %}{%
 if jekyll.environment == "production" %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127096504-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', '{{ site.data.tokens.google-analytics }}', 'auto');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-127096504-1');
 </script>
 {% endif %}
